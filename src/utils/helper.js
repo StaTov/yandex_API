@@ -1,5 +1,5 @@
 
-export const yaInit = (setLoading, setToken) => {
+export const yandexInit = (setLoading, setToken) => {
     return window.YaAuthSuggest.init({
         client_id: 'f95e552af1594dd585f6ec1aca8cc1f3',
         response_type: 'token',

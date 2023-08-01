@@ -15,8 +15,19 @@ export const getDiskInfo = async () => {
     return response.data
 };
 
-export const loadFile = async () => {
-    const url = await axios.get(`${baseURL}/disk/resources/upload?path=`, )
+export const loadFile = async (file) => {
+    if (!file) {
+        return
+    }
+    const fileName = encodeURIComponent(file.name)
+    const responseObj = await axios.get(`${baseURL}/disk/resources/upload?path=${fileName}`)
+    const url = responseObj?.href
+    if (!url) {
+        return
+    }
+    const response = await axios(`${url}`,)
+
+
 };
 
 //
