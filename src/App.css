@@ -3,7 +3,7 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-color: rgb(255, 160, 97);
+    background-color: rgb(99, 185, 198);
 }
 
 nav {
@@ -76,7 +76,7 @@ nav {
 
 button {
     appearance: none;
-    background-color: #FAFBFC;
+    background-color: whitesmoke;
     border: 1px solid rgba(27, 31, 35, 0.15);
     border-radius: 6px;
     box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
@@ -129,4 +129,65 @@ button:before {
 
 button:-webkit-details-marker {
     display: none;
+}
+
+.notification_container {
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 500px;
+    width: max-content;
+    height: max-content;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 6px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    opacity: 1;
+    transition: 0.4s opacity;
+
+}
+
+.closeButton {
+    font-weight: bold;
+    font-size: 15px;
+    display: block;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+.closeButton::after {
+    content: '\2716';
+}
+
+.closeButton:hover {
+    color: rgb(99, 185, 198);
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.loader_container {
+ width: 70vw;
+ margin: 0 auto;
+}
+
+.loader {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    }
+
+.div_title {
+    font-size: 20px;
+    margin-top: 20px;
 }

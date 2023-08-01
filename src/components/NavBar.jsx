@@ -2,9 +2,12 @@ import { useNavigate } from "react-router-dom";
 import FileLoader from "./FileLoader";
 
 
+
+
 const NavBar = () => {
 
     const navigate = useNavigate()
+
 
     const handleClick = () => {
         localStorage.removeItem('access_token')

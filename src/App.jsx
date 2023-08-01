@@ -4,7 +4,9 @@ import EmptyPage from './components/EmptyPage';
 import './App.css';
 import NavBar from './components/NavBar';
 
+
 function App() {
+
 
   return (
     <div className='container'>
@@ -15,6 +17,7 @@ function App() {
         <Route path='/api' element={< NavBar />} >
         </Route>
       </Routes>
+      
     </div>
   );
 }
