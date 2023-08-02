@@ -1,19 +1,16 @@
-import { useState } from "react";
-import { loadAll, loadFile } from "../services/api-service";
+import { useState, useRef } from "react";
+import { uploadAll } from "../services/api-service";
 import Notification from "./Notification";
-import axios from "axios";
+
+
 
 const FileLoader = () => {
     const [fileList, setFileList] = useState(null)
-    const [file, setFile] = useState('')
-    const [note, setNote] = useState('')
+    const [note, setNote] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
+    const aRef = useRef(null);
     const files = fileList ? [...fileList] : []
 
-    const handleFile = (e) => {
-        if (e.target.files) {
-            setFile(e.target.files[0]);
-        }
-    }
     const handleFileChange = (e) => {
         if (e.target.files.length > 100) {
             setNote('Максимальное количество файлов 100')
@@ -23,29 +20,39 @@ const FileLoader = () => {
         }
         setFileList(e.target.files)
     }
-    const handleUploadAll = (fileList) => {
-        if (!fileList) {
+
+    const handleUploadAll = async () => {
+        // Проверка на наличие файлов
+        if (!files || files.length < 1) {
             setNote('Добавьте файлы.')
             return;
         }
-       loadAll(fileList)
-    }
-    const handleUploadFile = async () => {
-        if (!file) {
-            setNote('Добавьте файл.')
-            return;
-        }
         try {
-            await loadFile(file)
-            setFile(null)
-            setNote(`${file.name} успешно загружен.`)
-        } catch (error) {
-            if (axios.isAxiosError(error)) {
-                setNote(error.response.data.message)
-            } else {
-                setNote('Что-то пошло не так')
-                console.log(error)
+            setIsLoading(true)
+            const existFiles = await uploadAll(files)
+
+            // Проверка существующих файлов 
+            if (existFiles && existFiles.length > 0) {
+
+                const messageList = existFiles.map(m =>
+                    m.message.slice(7, -16))
+                setNote(<div>
+                    Невозможно добавить файлы, <br />
+                    Файлы с таким именем уже существуют на диске:
+                    <ul>
+                        {messageList.map((m, i) => <li key={i}>{m}</li>)}
+                    </ul>
+                </div>)
+                return;
             }
+            setNote('Все файлы успешно загружены.')
+        } catch (error) {
+            setNote(`Что-то пошло не так ${error.message}`)
+            console.log(error)
+        } finally {
+            aRef.current.value = null;
+            setFileList(null)
+            setIsLoading(false)
         }
     }
 
@@ -53,21 +60,12 @@ const FileLoader = () => {
         <>
             <div className="loader_container">
                 <div className="div_title">Загрузка файлов на yandex disk</div>
-                <div className="loader">
-                    выбрать файл
-                    <input
-                        type='file'
-                        onChange={handleFile} />
-
-                    <div>{file && `${file.name} - ${file.type}`}</div>
-                    <button onClick={handleUploadFile}>загрузить файл</button>
-                </div>
-
                 <div>
-                    <div>
-                        <input type="file" onChange={handleFileChange} multiple />
+                    <div className='loader'>
+                        <input ref={aRef} type="file" onChange={handleFileChange} multiple />
+                        <button onClick={handleUploadAll}>Upload</button>
 
-                        <ul>
+                        <ul style={{ marginLeft: '40px' }}>
                             {files.map((file, i) => (
                                 <li key={i}>
                                     {file.name} - {file.type}
@@ -75,10 +73,14 @@ const FileLoader = () => {
                             ))}
                         </ul>
 
-                        <button onClick={handleUploadAll}>Upload</button>
                     </div>
                 </div>
             </div>
+            {isLoading &&
+                <div className="box_circle2">
+                    <div className="circle2"></div>
+                </div>
+            }
             <Notification note={note} setNote={setNote} />
         </>
     )

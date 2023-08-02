@@ -7,10 +7,7 @@ const EmptyPage = () => {
     };
 
     todo();
-    return (
-        <>
-        </>
-    )
+    return null
 }
 
 export default EmptyPage;

@@ -1,7 +1,8 @@
 .container {
     position: relative;
+    background-attachment: fixed;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
     background-color: rgb(99, 185, 198);
 }
@@ -137,7 +138,7 @@ button:-webkit-details-marker {
     justify-content: space-between;
     align-items: center;
     min-width: 500px;
-    width: max-content;
+    width: 500px;
     height: max-content;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 6px;
@@ -176,18 +177,38 @@ button:-webkit-details-marker {
 }
 
 .loader_container {
- width: 70vw;
- margin: 0 auto;
+    border: 1px solid forestgreen;
+    width: 70vw;
+    margin: 0 auto;
 }
 
 .loader {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     padding: 10px;
-    }
+}
 
 .div_title {
     font-size: 20px;
     margin-top: 20px;
+}
+
+li {
+    margin-left: 20px;
+}
+
+.box_circle2 {
+    border: 1px solid gold;
+    display: flex;
+    position: absolute; 
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    
+    left: 0;
+    right: 0;
+
 }

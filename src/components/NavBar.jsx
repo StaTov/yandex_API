@@ -1,16 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import FileLoader from "./FileLoader";
 
-
-
-
-const NavBar = () => {
+const NavBar = ({ setToken }) => {
 
     const navigate = useNavigate()
 
-
     const handleClick = () => {
         localStorage.removeItem('access_token')
+        setToken(null)
         navigate('/')
     }
     return (

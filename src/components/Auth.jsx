@@ -3,19 +3,20 @@ import { yandexInit } from "../utils/helper";
 import { useNavigate } from "react-router-dom";
 
 
-const Auth = () => {
+const Auth = ({ token, setToken }) => {
+   
     const navigate = useNavigate()
-    const [token, setToken] = useState(null);
     const [loading, setLoading] = useState(false);
-
 
     useEffect(() => {
         setToken(localStorage.getItem('access_token'))
         if (!token) {
             setLoading(true)
             yandexInit(setLoading, setToken)
+        } else {
+            navigate('/api')
         }
-    }, [token])
+    }, [navigate, setToken, token])
 
     if (!token) {
         return (
@@ -28,7 +29,6 @@ const Auth = () => {
             </>
         )
     }
-    navigate('/api')
     return null;
 }
 

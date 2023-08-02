@@ -7,7 +7,7 @@ const Notification = ({ note, setNote }) => {
 
     const style = note
         ? 'notification_container'
-        : 'notification_container hidden'
+        : 'notification_container hidden' 
 
     return (
         <div className={style}>
