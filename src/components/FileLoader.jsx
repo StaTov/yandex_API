@@ -7,7 +7,7 @@ import Notification from "./Notification";
 const FileLoader = () => {
     const [fileList, setFileList] = useState(null)
     const [note, setNote] = useState(null)
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
     const aRef = useRef(null);
     const files = fileList ? [...fileList] : []
 
@@ -55,7 +55,7 @@ const FileLoader = () => {
             setIsLoading(false)
         }
     }
-
+//rgb(172, 231, 211)
     return (
         <>
             <div className="loader_container">
@@ -63,24 +63,27 @@ const FileLoader = () => {
                 <div>
                     <div className='loader'>
                         <input ref={aRef} type="file" onChange={handleFileChange} multiple />
-                        <button onClick={handleUploadAll}>Upload</button>
-
-                        <ul style={{ marginLeft: '40px' }}>
-                            {files.map((file, i) => (
-                                <li key={i}>
-                                    {file.name} - {file.type}
-                                </li>
-                            ))}
-                        </ul>
-
+                        <button onClick={handleUploadAll}>Загрузить</button>
+                        {isLoading && <div className="box_circle2">
+                            <div className="circle2"></div>
+                        </div>}
                     </div>
+                        <div className="box__1">
+                            Файлы:
+                            <div className='box_list'>
+                                <ul style={{ marginLeft: '40px' }}>
+                                    {files.map((file, i) => (
+                                        <li key={i}>
+                                            {file.name} - {file.type}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
                 </div>
+
+
             </div>
-            {isLoading &&
-                <div className="box_circle2">
-                    <div className="circle2"></div>
-                </div>
-            }
             <Notification note={note} setNote={setNote} />
         </>
     )
