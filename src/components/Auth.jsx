@@ -9,13 +9,16 @@ const Auth = ({ token, setToken }) => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        setToken(localStorage.getItem('access_token'))
         if (!token) {
             setLoading(true)
             yandexInit(setLoading, setToken)
+        } else {
+            navigate('/api')
         }
     }, [navigate, setToken, token])
-
+   
+    setToken(localStorage.getItem('access_token'))
+ 
     if (!token) {
         return (
             <>
