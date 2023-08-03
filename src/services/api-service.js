@@ -77,6 +77,7 @@ export const uploadAll = async (files) => {
                 headers: {
                     'content-type': f.type,
                     'content-length': `${f.size}`,
+                    'Authorization': `OAuth ${token}`,
                 },
                 body: f,
 

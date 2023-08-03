@@ -187,6 +187,7 @@ button:-webkit-details-marker {
     border-radius: 4px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     align-items: flex-start;
     width: 100%;
     padding: 20px;
