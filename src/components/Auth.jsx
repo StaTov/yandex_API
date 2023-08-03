@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const Auth = ({ token, setToken }) => {
-   
+
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
 
@@ -13,8 +13,6 @@ const Auth = ({ token, setToken }) => {
         if (!token) {
             setLoading(true)
             yandexInit(setLoading, setToken)
-        } else {
-            navigate('/api')
         }
     }, [navigate, setToken, token])
 
@@ -29,6 +27,7 @@ const Auth = ({ token, setToken }) => {
             </>
         )
     }
+    navigate('/api')
     return null;
 }
 
