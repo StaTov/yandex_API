@@ -55,34 +55,34 @@ const FileLoader = () => {
             setIsLoading(false)
         }
     }
-//rgb(172, 231, 211)
+    //rgb(172, 231, 211)
     return (
         <>
             <div className="loader_container">
                 <div className="div_title">Загрузка файлов на yandex disk</div>
                 <div>
                     <div className='loader'>
-                        <input ref={aRef} type="file" onChange={handleFileChange} multiple />
+                        <div className='box_input'>
+                            <input ref={aRef} type="file" onChange={handleFileChange} multiple />
+                        </div>
                         <button onClick={handleUploadAll}>Загрузить</button>
                         {isLoading && <div className="box_circle2">
                             <div className="circle2"></div>
                         </div>}
                     </div>
-                        <div className="box__1">
-                            Файлы:
-                            <div className='box_list'>
-                                <ul style={{ marginLeft: '40px' }}>
-                                    {files.map((file, i) => (
-                                        <li key={i}>
-                                            {file.name} - {file.type}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                    <div className="box__1">
+                        Файлы:
+                        <div className='box_list'>
+                            <ul style={{ marginLeft: '40px' }}>
+                                {files.map((file, i) => (
+                                    <li key={i}>
+                                        {file.name} - {file.type}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
+                    </div>
                 </div>
-
-
             </div>
             <Notification note={note} setNote={setNote} />
         </>

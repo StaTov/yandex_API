@@ -7,19 +7,18 @@ import { useState } from 'react';
 
 
 function App() {
-  
+
   const [token, setToken] = useState(null);
 
   return (
     <div className='container'>
       <Routes>
-        <Route path='/' element={<Auth token={token} setToken={setToken}/>} />
+        <Route path='/' element={<Auth token={token} setToken={setToken} />} />
         <Route path='/empty' element={<EmptyPage />} />
         <Route path='*' element={<Auth />} />
-        <Route path='/api' element={< NavBar token={token} setToken={setToken}/>} >
+        <Route path='/api' element={< NavBar token={token} setToken={setToken} />} >
         </Route>
       </Routes>
-      
     </div>
   );
 }

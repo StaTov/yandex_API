@@ -2,7 +2,7 @@
     position: relative;
     background-attachment: fixed;
     width: 100vw;
-    min-height: 100vh;
+    height: 100vh;
     overflow: hidden;
     background-color: rgb(99, 185, 198);
 }
@@ -228,4 +228,8 @@ li {
     margin-top: 15px;
     width: 50%;
     height: 350px;
+}
+
+.box_input {
+    margin-bottom: 10px;
 }
