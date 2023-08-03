@@ -152,8 +152,13 @@ button:-webkit-details-marker {
     padding: 20px;
     opacity: 1;
     transition: 0.4s opacity;
-
 }
+
+@media screen and (max-width: 601px) {
+    .notification_container {
+      width: 80%;
+    }
+  }
 
 .closeButton {
     font-weight: bold;
@@ -230,8 +235,6 @@ li {
     width: 85%;
     height: 350px;
 }
-
-
 
 .box_input {
     margin-bottom: 10px;
