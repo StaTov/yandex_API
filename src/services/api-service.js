@@ -60,7 +60,7 @@ export const uploadAll = async (files) => {
             fetch(`${baseURL}/disk/resources/upload?path=${encodeURIComponent(f.name)}`, {
                 headers: {
                     Accept: '*/*',
-                   
+                    Authorization: `OAuth ${token}`
                 }
             }
             )))
@@ -78,7 +78,7 @@ export const uploadAll = async (files) => {
                     'Accept': '*/*',
                     'content-type': f.type,
                     'content-length': `${f.size}`,
-                    
+                    'Authorization': `OAuth ${token}`,
                 },
                 body: f,
 
