@@ -139,6 +139,7 @@ button:-webkit-details-marker {
     align-items: center;
     min-width: 500px;
     width: 500px;
+    max-width: 80vw;
     height: max-content;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 6px;
@@ -226,9 +227,11 @@ li {
 
 .box__1 {
     margin-top: 15px;
-    width: 50%;
+    width: 85%;
     height: 350px;
 }
+
+
 
 .box_input {
     margin-bottom: 10px;
