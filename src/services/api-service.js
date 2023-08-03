@@ -59,7 +59,7 @@ export const uploadAll = async (files) => {
         const responsesUrl = await Promise.all(files.map(f =>
             fetch(`${baseURL}/disk/resources/upload?path=${encodeURIComponent(f.name)}`, {
                 headers: {
-                    Accept: 'application/json',
+                    Accept: '*/*',
                     Authorization: `OAuth ${token}`
                 }
             }
@@ -75,6 +75,7 @@ export const uploadAll = async (files) => {
             fetch(`${result[i].href}`, {
                 method: 'PUT',
                 headers: {
+                    'Accept': '*/*',
                     'content-type': f.type,
                     'content-length': `${f.size}`,
                     'Authorization': `OAuth ${token}`,
@@ -84,7 +85,7 @@ export const uploadAll = async (files) => {
             })))
         const response = await Promise.all(responsesFiles.map(f => f.json));
         console.log(response)
-   
+
     } catch (error) {
         console.log('finalERrr', error)
     }
