@@ -7,8 +7,9 @@ const Auth = ({ token, setToken }) => {
 
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
-
+console.log(11)
     useEffect(() => {
+        console.log(21)
         if (!token) {
             setLoading(true)
             yandexInit(setLoading, setToken)
@@ -16,9 +17,9 @@ const Auth = ({ token, setToken }) => {
             navigate('/api')
         }
     }, [navigate, setToken, token])
-   
+
     setToken(localStorage.getItem('access_token'))
- 
+
     if (!token) {
         return (
             <>
