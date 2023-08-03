@@ -2,9 +2,8 @@ import { useState, useRef } from "react";
 import { uploadAll } from "../services/api-service";
 import Notification from "./Notification";
 
-
-
 const FileLoader = () => {
+
     const [fileList, setFileList] = useState(null)
     const [note, setNote] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
