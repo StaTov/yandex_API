@@ -3,9 +3,9 @@ export const yandexInit = (setLoading, setToken) => {
     return window.YaAuthSuggest.init({
         client_id: 'f95e552af1594dd585f6ec1aca8cc1f3',
         response_type: 'token',
-        redirect_uri: 'http://localhost:3000/empty'
+        redirect_uri: 'https://dazzling-raindrop-0c8ca0.netlify.app/empty'
     },
-        'http://localhost:3000', {
+        'https://dazzling-raindrop-0c8ca0.netlify.app', {
         view: 'button',
         parentId: 'yaBtn',
         buttonView: 'main',

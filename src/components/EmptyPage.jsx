@@ -1,7 +1,7 @@
 const EmptyPage = () => {
     
     function todo() {
-        window.YaSendSuggestToken("http://localhost:3000", {
+        window.YaSendSuggestToken("https://dazzling-raindrop-0c8ca0.netlify.app", {
             "kek": true
         });
     };
