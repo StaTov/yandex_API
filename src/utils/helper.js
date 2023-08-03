@@ -20,9 +20,7 @@ export const yandexInit = (setLoading, setToken) => {
         })
         .then(function (data) {
             localStorage.setItem('access_token', data.access_token)
-            setToken(data.access_token)
-            console.log('Сообщение с токеном: ', data);
-        ;
+            setToken(data.access_token);
         })
         .catch(function (error) {
             console.log('Что-то пошло не так: ', error);

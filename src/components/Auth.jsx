@@ -9,7 +9,6 @@ const Auth = ({ token, setToken }) => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-      
         if (!token) {
             setLoading(true)
             yandexInit(setLoading, setToken)
