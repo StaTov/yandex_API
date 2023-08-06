@@ -15,15 +15,14 @@ function App() {
   const [token, setToken] = useState(null);
 
   if (localStorage.getItem('access_token')) {
-    console.log(localStorage.getItem('access_token'))
+    setToken(localStorage.getItem('access_token'))
   }
 
   useEffect(() => {
-    
+
     if (!token) {
       yandexInit(setToken)
       setToken(localStorage.getItem('access_token'))
-      
     }
   }, [setToken, token])
 
