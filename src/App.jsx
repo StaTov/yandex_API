@@ -14,12 +14,11 @@ function App() {
 
   //dazzling-raindrop-0c8ca0.netlify.app
   const [token, setToken] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+
 
   useEffect(() => {
     if (!token) {
-      setIsLoading(true)
-      yandexInit(setIsLoading, setToken)
+      yandexInit(setToken)
       setToken(localStorage.getItem('access_token'))
     }
   }, [setToken, token])
@@ -29,7 +28,7 @@ function App() {
       <Route path='/' element={<Nav setToken={setToken} token={token} />} >
         <Route path='/' element={
           !token
-            ? <Auth isLoading={isLoading} />
+            ? <Auth />
             : <DiskApi />
         } />
         <Route path='/empty' element={<EmptyPage />} />
