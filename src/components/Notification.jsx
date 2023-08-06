@@ -9,8 +9,6 @@ const Notification = ({ note, setNote }) => {
         ? 'notification_container'
         : 'notification_container hidden'
 
-    setTimeout(() => setNote(''), 10000)
-
     return (
         <div className={style}>
             <span className="notification_item">{note}</span>

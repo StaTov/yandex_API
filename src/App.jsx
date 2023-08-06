@@ -13,11 +13,13 @@ import { yandexInit } from './utils/helper';
 function App() {
 
   const [token, setToken] = useState(null);
-
+  console.log(1);
   useEffect(() => {
+    console.log(2);
     if (!token) {
       yandexInit(setToken)
       setToken(localStorage.getItem('access_token'))
+      console.log(3);
     }
   }, [setToken, token])
 
