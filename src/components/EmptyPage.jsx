@@ -1,12 +1,12 @@
 const EmptyPage = () => {
     
-    function todo() {
+    function getToken() {
         window.YaSendSuggestToken("https://dazzling-raindrop-0c8ca0.netlify.app", {
             "kek": true
         });
     };
 
-    todo();
+    getToken();
     return null
 }
 

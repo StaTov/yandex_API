@@ -1,8 +1,7 @@
-import { useNavigate } from "react-router-dom";
-import FileLoader from "./FileLoader";
+import { Outlet, useNavigate } from "react-router-dom"
 
-const NavBar = ({ setToken }) => {
 
+const Nav = ({ setToken, token }) => {
     const navigate = useNavigate()
 
     const handleClick = () => {
@@ -10,18 +9,19 @@ const NavBar = ({ setToken }) => {
         setToken(null)
         navigate('/')
     }
+
     return (
-        <>
+        <div className='container'>
             <nav>
                 <div style={{ width: '40px' }}></div>
                 <div>Yandex Disk API</div>
-                <div>
-                    <button onClick={handleClick}>logout</button>
+                <div style={{ minWidth: '40px' }}>
+                    {token && <button onClick={handleClick}>logout</button>}
                 </div>
             </nav>
-            <FileLoader />
-        </>
+            <Outlet />
+        </div>
     )
 }
 
-export default NavBar;
+export default Nav;

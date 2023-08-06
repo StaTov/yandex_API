@@ -42,7 +42,7 @@ export const uploadAll = async (files) => {
             return existFiles
         }
 
-        const responsesFiles = await Promise.all(files.map((f, i) =>
+        await Promise.all(files.map((f, i) =>
             fetch(`${result[i].href}`, {
                 method: 'PUT',
                 headers: {
@@ -51,10 +51,7 @@ export const uploadAll = async (files) => {
                     'content-length': `${f.size}`,
                 },
                 body: f,
-
             })))
-        const response = await Promise.all(responsesFiles.map(f => f.json));
-        console.log(response)
 
     } catch (error) {
         console.log('ошибка', error)

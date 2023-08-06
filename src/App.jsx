@@ -2,24 +2,40 @@ import { Routes, Route } from 'react-router-dom';
 import Auth from './components/Auth';
 import EmptyPage from './components/EmptyPage';
 import './App.css';
-import NavBar from './components/NavBar';
 import { useState } from 'react';
+import Nav from './components/Nav';
+import DiskApi from './components/DiskApi';
+import { Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { yandexInit } from './utils/helper';
 
 
 function App() {
 
+  //dazzling-raindrop-0c8ca0.netlify.app
   const [token, setToken] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (!token) {
+      setIsLoading(true)
+      yandexInit(setIsLoading, setToken)
+      setToken(localStorage.getItem('access_token'))
+    }
+  }, [setToken, token])
 
   return (
-    <div className='container'>
-      <Routes>
-        <Route path='/' element={<Auth token={token} setToken={setToken} />} />
+    <Routes>
+      <Route path='/' element={<Nav setToken={setToken} token={token} />} >
+        <Route path='/' element={
+          !token
+            ? <Auth isLoading={isLoading} />
+            : <DiskApi />
+        } />
         <Route path='/empty' element={<EmptyPage />} />
-        <Route path='*' element={<Auth />} />
-        <Route path='/api' element={< NavBar token={token} setToken={setToken} />} >
-        </Route>
-      </Routes>
-    </div>
+        <Route path='*' element={<Navigate to='/' replace={true} />} />
+      </Route>
+    </Routes >
   );
 }
 
