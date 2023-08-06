@@ -20,8 +20,8 @@ function App() {
 
   useEffect(() => {
     if (!token) {
-      yandexInit()
-      setToken(localStorage.getItem('access_token'))
+      yandexInit(setToken)
+      
     }
   }, [token])
 
