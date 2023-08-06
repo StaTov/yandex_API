@@ -14,17 +14,14 @@ function App() {
 
   const [token, setToken] = useState(null);
 
-  if (localStorage.getItem('access_token')) {
-    setToken(localStorage.getItem('access_token'))
-  }
-
   useEffect(() => {
 
-    if (!token) {
+    if (!localStorage.getItem('access_token')) {
       yandexInit(setToken)
       setToken(localStorage.getItem('access_token'))
     }
-  }, [setToken, token])
+    setToken(localStorage.getItem('access_token'))
+  }, [setToken])
 
   return (
     <Routes>
