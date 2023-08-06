@@ -21,7 +21,7 @@ function App() {
       setToken(localStorage.getItem('access_token'))
     }
     setToken(localStorage.getItem('access_token'))
-  }, [setToken])
+  }, [token, setToken])
 
   return (
     <Routes>
