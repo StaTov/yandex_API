@@ -12,9 +12,7 @@ import { yandexInit } from './utils/helper';
 
 function App() {
 
-  //dazzling-raindrop-0c8ca0.netlify.app
   const [token, setToken] = useState(null);
-
 
   useEffect(() => {
     if (!token) {

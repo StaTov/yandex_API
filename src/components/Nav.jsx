@@ -1,13 +1,13 @@
-import { Outlet, useNavigate } from "react-router-dom"
+import { Outlet} from "react-router-dom"
 
 
 const Nav = ({ setToken, token }) => {
-    const navigate = useNavigate()
+  //  const navigate = useNavigate()
 
     const handleClick = () => {
         localStorage.removeItem('access_token')
         setToken(null)
-        navigate('/')
+        //navigate('/')
     }
 
     return (
